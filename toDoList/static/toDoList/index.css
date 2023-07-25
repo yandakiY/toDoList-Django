@@ -13,12 +13,71 @@ body{
     font-family: Lato , sans-serif;
 }
 
+h1{
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
 #content{
     border:solid 1px black;
+    border-radius: 5px;
     padding: 45px;
 }
 
 #content #bloc-task{
+    margin-top:20px;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#content #bloc-task #task{
+    border: solid 1px black;
+    border-radius: 5px;
+    /* padding:10px; */
+    height: 60px;
+    font-size: 24px;
+    padding-left: 5px;
+    /* display */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#content #bloc-task #task .right #delete{
+    margin-right: 5px;
+    font-weight: bold;
+    color:red;
+    text-decoration: underline;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#content .addTask form{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+#content .addTask .input-task{
+    /* height: 35px; */
+    border-radius: 3px;
+    border-color: rgba(0, 0, 255, 0.459);
+    border: solid .1px;
+    padding-left: 5px;
+    font-size:25px;
+}
+#content .addTask input[type="submit"]{
+    /* height: 35px; */
+    cursor: pointer;
+    border-radius: 3px;
+    border:none;
+    padding: 15px;
+    color:white;
+    background-color: rgba(21, 21, 132, 0.893);
+    font-weight: bold;
+}
+#content .addTask input[type="submit"]:hover{
+    transition: all .5s;
+    text-decoration: underline;
+    background-color: rgba(81, 81, 138, 0.893);
 }

@@ -15,9 +15,30 @@
 
     <div id="content">
         <h1>To Do List</h1>
+        
+        <div class="addTask">
+            <form method="POST" action="">
+                <input type="text" placeholder="Task" class='input-task' />
+                <input type="submit" value="Add"/>
+            </form>
+        </div>
         <div id="bloc-task">
             {% for task in tasks %}
-                <div id="task"> {{task}} </div>
+                <div id="task">
+                    <div class="left">
+                        <div id="task_text">
+                            {{task.task_text}}
+                        </div>
+                        <div id="task_date">
+                            {{task.date_creation}}
+                        </div>
+                    </div>
+                    <div class="right">
+                        <a href="" id="delete">
+                            Delete
+                        </a>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </div>
