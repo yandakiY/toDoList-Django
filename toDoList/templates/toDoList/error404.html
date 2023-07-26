@@ -14,7 +14,9 @@
 <body>
 
     <h1>Error 404</h1>
-    <a href="{% url 'toDoList:index' %}">Go home</a>
+    {% comment %} <br> {% endcomment %}
+    <h3>Operation not possible</h3>
+    <a id="goHome" href="{% url 'toDoList:index' %}">Go home</a>
     
 </body>
 </html>
