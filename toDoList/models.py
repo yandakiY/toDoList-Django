@@ -5,6 +5,7 @@ from django.db import models
 class Task(models.Model):
     task_text = models.CharField(max_length=200)
     date_creation = models.DateTimeField("Date creation")
+    view = models.BooleanField(default=True)
     
     
     def __str__(self) -> str:
