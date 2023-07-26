@@ -1,5 +1,5 @@
 # import generic as generic
-from django.shortcuts import render ,HttpResponseRedirect
+from django.shortcuts import render ,HttpResponseRedirect ,get_object_or_404
 from django.views import generic
 from .models import Task
 from django.utils import timezone
@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
     template_name = "toDoList/index.html"
 
     def get_queryset(self):
-        return Task.objects.all()
+        return Task.objects.all().filter(view=True).order_by('-date_creation')
 
 
 # function add new task in DB
@@ -27,3 +27,40 @@ def addTask(request):
     new_task.save()
     # redirection to index page
     return HttpResponseRedirect(reverse('toDoList:index' , args=()))
+
+
+# function delete new task
+def deleteTask(request , task_id):
+    # list of id Task , for Task True
+    list_id_task = [task.id for task in Task.objects.all() if task.view]
+    print(list_id_task)
+    # get id of task
+    # get item who correspond
+    # change value of view
+    
+    # task_to_delete = get_object_or_404(Task , id=task_id)
+    # print(task_to_delete)
+    
+    if (task_id in list_id_task):
+        # get item task who correspond
+        task_to_delete = get_object_or_404(Task , id=task_id)
+        # change value of view
+        task_to_delete.view = False
+        # and now save that
+        task_to_delete.save()
+    else:
+        # render Error 404
+        return render(request , "toDoList/error404.html")
+    
+    # # try 
+    # try:
+    #     # change value of view
+    #     task_to_delete.view = False
+    #     # and now save that
+    #     task_to_delete.save()
+    # except (KeyError):
+    #     return render(request , "toDoList/index.html" , {"error_message":"Operation impossible to perform"})
+    
+    
+    return HttpResponseRedirect(reverse('toDoList:index' , args=()))
+    # pass
