@@ -72,3 +72,21 @@ def deleteTask(request , task_id):
     
     return HttpResponseRedirect(reverse('toDoList:index' , args=()))
     # pass
+    
+def restoreTask(request , task_id):
+    # get lists task deleted
+    task_deleted = [task.id for task in Task.objects.all()]
+    
+    if (task_id in task_deleted):
+        # get item
+        task = get_object_or_404(Task , id=task_id)
+        # change view
+        task.view = True
+        # save change
+        task.save()
+    else:
+        # return Error 
+        return render(request , "toDoList/error404.html")
+    
+    # redirection to Index
+    return HttpResponseRedirect(reverse("toDoList:index" , args=()))
