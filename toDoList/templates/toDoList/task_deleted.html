@@ -15,17 +15,9 @@
 
     <div id="content">
         <h1>To Do List</h1>
-        
-        <div class="addTask">
-            <form method="POST" action="{% url 'toDoList:addTask' %}">
-                {% csrf_token %}
-                <input type="text" name="task_text" required placeholder="Task" class='input-task' />
-                <input type="submit" value="Add"/>
-            </form>
-            {% if error_message %}<span style="color:red;font-weight:bold;">{{error_message}}</span>{% endif %}
-        </div>
+        <h3>Task Deleted</h3>
         <div id="bloc-task">
-            {% for task in tasks %}
+            {% for task in tasks_deleted %}
                 <div id="task">
                     <div class="left">
                         <div id="task_text">
@@ -37,14 +29,14 @@
                     </div>
                     <div class="right">
                         <a href="{% url 'toDoList:deleteTask' task.id %}" id="delete">
-                            Delete
+                            Restore
                         </a>
                     </div>
                 </div>
             {% endfor %}
         </div>
         {% comment %} <a href="{% url '' %}">Task deleted</a> {% endcomment %}
-        <a href="{% url 'toDoList:viewTaskDelete' %}">Task deleted</a>
+        <a href="">Go to home page</a>
     </div>
 </body>
 </html>

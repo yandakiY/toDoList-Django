@@ -22,6 +22,16 @@ h1{
     border:solid 1px black;
     border-radius: 5px;
     padding: 45px;
+    /* text-align: center; */
+}
+
+#content a{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color:rgba(21, 21, 132, 0.893);
+    text-decoration: none;
+    margin-top: 10px;
 }
 
 #content #bloc-task{

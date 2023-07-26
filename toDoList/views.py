@@ -15,6 +15,14 @@ class IndexView(generic.ListView):
         return Task.objects.all().filter(view=True).order_by('-date_creation')
 
 
+class TaskDeletedView(generic.ListView):
+    context_object_name = "tasks_deleted"
+    template_name = "toDoList/task_deleted.html"
+    
+    def get_queryset(self):
+        return Task.objects.all().filter(view=False)
+    
+
 # function add new task in DB
 def addTask(request):
     # get the task_text
