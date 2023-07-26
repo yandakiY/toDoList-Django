@@ -17,8 +17,9 @@
         <h1>To Do List</h1>
         
         <div class="addTask">
-            <form method="POST" action="">
-                <input type="text" placeholder="Task" class='input-task' />
+            <form method="POST" action="{% url 'toDoList:addTask' %}">
+                {% csrf_token %}
+                <input type="text" name="task_text" required placeholder="Task" class='input-task' />
                 <input type="submit" value="Add"/>
             </form>
         </div>
