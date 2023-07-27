@@ -103,7 +103,44 @@ def removeDefinitelyTask(request , task_id):
         # delete this task
         task.delete()
         # redirect to 
-        return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
         # pass
     else:
         return render(request , "toDoList/error404.html")
+
+    return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
+
+
+def deleteAllTask(request):
+    # delete all tasks with views equal to True
+    lists_all_tasks = [task.id for task in Task.objects.all() if task.view == True]
+    
+    if len(lists_all_tasks) != 0:
+        
+        for task_id in lists_all_tasks:
+            # get item , with the id in the lists
+            t = get_object_or_404(Task , id=task_id)
+            # change task.view to False
+            t.view = False
+            # save the change
+            t.save()
+    else:
+        return HttpResponseRedirect(reverse("toDoList:index" , args=()))
+    # return to Home page
+    return HttpResponseRedirect(reverse("toDoList:index" , args=()))
+
+
+def removeDefinitelyAllTask(request):
+    # get all task with task.view = False
+    lists_all_tasks_deleted = [task.id for task in Task.objects.all() if task.view == False]
+        
+    if len(lists_all_tasks_deleted) != 0:
+        
+        for task_id in lists_all_tasks_deleted:
+            # get item , with the id in the lists
+            t = get_object_or_404(Task , id=task_id)
+            # delete this task
+            t.delete()
+    else:
+        return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
+    # return to Home page
+    return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))

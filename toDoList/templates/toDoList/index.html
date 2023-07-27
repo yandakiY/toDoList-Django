@@ -24,27 +24,35 @@
             </form>
             {% if error_message %}<span style="color:red;font-weight:bold;">{{error_message}}</span>{% endif %}
         </div>
-        <div id="bloc-task">
-            {% for task in tasks %}
-                <div id="task">
-                    <div class="left">
-                        <div id="task_text">
-                            {{task.task_text}}
+        {% if tasks %}
+            <div id="bloc-task">
+                {% for task in tasks %}
+                    <div id="task">
+                        <div class="left">
+                            <div id="task_text">
+                                {{task.task_text}}
+                            </div>
+                            <div id="task_date">
+                                {{task.date_creation}}
+                            </div>
                         </div>
-                        <div id="task_date">
-                            {{task.date_creation}}
+                        <div class="right">
+                            <a href="{% url 'toDoList:deleteTask' task.id %}" id="delete">
+                                Delete
+                            </a>
                         </div>
                     </div>
-                    <div class="right">
-                        <a href="{% url 'toDoList:deleteTask' task.id %}" id="delete">
-                            Delete
-                        </a>
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
         </div>
-        {% comment %} <a href="{% url '' %}">Task deleted</a> {% endcomment %}
-        <a href="{% url 'toDoList:viewTaskDelete' %}">Task deleted</a>
+        {% else %}
+            <div id="no-task">
+                No Task in databases
+            </div>
+        {% endif %}
+        <div id="bottom">
+            <a id="viewTaskDelete" href="{% url 'toDoList:viewTaskDelete' %}">Task deleted</a>
+            <a id="deleteAll" href="{% url 'toDoList:deleteAllTask' %}">Delete all tasks</a>
+        </div>
     </div>
 </body>
 </html>

@@ -25,6 +25,38 @@ h1{
     /* text-align: center; */
 }
 
+#content #bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:30px;
+}
+
+#content #bottom #deleteAlldefinitely{
+    background-color: rgba(132, 21, 21, 0.893);
+    color:white;
+    font-weight: bold;
+    padding:5px;
+    border-radius: 5px;
+}
+#content #bottom #goHome{
+    background-color: rgba(21, 21, 132, 0.893);
+    color:white;
+    font-weight: bold;
+    padding:5px;
+    border-radius: 5px;
+}
+
+#content #no-task{
+    /* border:solid 1px; */
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
 #content a{
     display: flex;
     justify-content: center;

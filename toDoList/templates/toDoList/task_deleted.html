@@ -15,30 +15,41 @@
 
     <div id="content">
         <h1>To Do List</h1>
-        <h3>Task Deleted</h3>
         <div id="bloc-task">
-            <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Task title</th>
-                    <th>Task creation date</th>
-                    <th>Options</th>
-                </tr>
-                {% for task in tasks_deleted %}
-                <tr>
-                    <td> {{task.id}} </td>
-                    <td> {{task.task_text}} </td>
-                    <td> {{task.date_creation}} </td>
-                    <td id="options">
-                        <a id="restore" href="{% url 'toDoList:restoreTask' task.id %}">Restore</a>
-                        <a id="remove" href="{% url 'toDoList:removeDefinitelyTask' task.id %}">Remove definitely</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
+            {% if tasks_deleted %}
+            <h3>Task Deleted</h3>
+
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Task title</th>
+                        <th>Task creation date</th>
+                        <th>Options</th>
+                    </tr>
+                    {% for task in tasks_deleted %}
+                    <tr>
+                        <td> {{task.id}} </td>
+                        <td> {{task.task_text}} </td>
+                        <td> {{task.date_creation}} </td>
+                        <td id="options">
+                            <a id="restore" href="{% url 'toDoList:restoreTask' task.id %}">Restore</a>
+                            <a id="remove" href="{% url 'toDoList:removeDefinitelyTask' task.id %}">Remove definitely</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            {% else %}
+                <div id="no-task">
+                    No Task deleted in databases
+                </div>
+            {% endif %}
         </div>
         {% comment %} <a href="{% url '' %}">Task deleted</a> {% endcomment %}
-        <a id="goHome" href="{% url 'toDoList:index' %}">Go to home page</a>
+        <div id="bottom">
+            <a id="goHome" href="{% url 'toDoList:index' %}">Go to home page</a>
+            <a id="deleteAlldefinitely" href="{% url 'toDoList:removeDefinitelyAllTask' %}">Delete definitely all tasks</a>
+        </div>
     </div>
 </body>
 </html>
