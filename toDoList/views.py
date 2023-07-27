@@ -144,3 +144,21 @@ def removeDefinitelyAllTask(request):
         return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
     # return to Home page
     return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
+
+def restoreAllTask(request):
+    # get all task with task.view = False
+    lists_all_tasks_deleted = [task.id for task in Task.objects.all() if task.view == False]
+        
+    if len(lists_all_tasks_deleted) != 0:
+        
+        for task_id in lists_all_tasks_deleted:
+            # get item , with the id in the lists
+            t = get_object_or_404(Task , id=task_id)
+            # change task view to True 
+            t.view = True
+            # save change
+            t.save()
+    else:
+        return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
+    # return to Home page
+    return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
