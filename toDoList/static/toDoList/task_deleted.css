@@ -5,12 +5,18 @@
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* width: 100lvh; */
     height: 100vh;
     /* padding:30px; */
     font-family: Lato , sans-serif;
+}
+
+body #myLink{
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 h1{
