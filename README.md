@@ -7,15 +7,15 @@ The "To Do List" is a web application developed with Django, a Python-based web 
  
 Main features of the application :
 
--Task creation: Users can create new task.
+- Task creation: Users can create new task.
 
--Delete task: Users can delete their task create.
+- Delete task: Users can delete their task create.
 
--Display tasks deleted : Once a user has deleted a task, this task can be display in "Section Task Deleted".
+- Display tasks deleted : Once a user has deleted a task, this task can be display in "Section Task Deleted".
 
--Remove definitely each tasks or all tasks.
+- Remove definitely each tasks or all tasks.
 
--Restore each tasks or all tasks.
+- Restore each tasks or all tasks.
 <!-- View active polls: The application displays only active polls with a publication date prior to the current date. -->
 
 ## Screenshots
