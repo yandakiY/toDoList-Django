@@ -29,7 +29,10 @@
                     <td> {{task.id}} </td>
                     <td> {{task.task_text}} </td>
                     <td> {{task.date_creation}} </td>
-                    <td><a id="restore" href="{% url 'toDoList:restoreTask' task.id %}">Restore</a></td>
+                    <td id="options">
+                        <a id="restore" href="{% url 'toDoList:restoreTask' task.id %}">Restore</a>
+                        <a id="remove" href="{% url 'toDoList:removeDefinitelyTask' task.id %}">Remove definitely</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

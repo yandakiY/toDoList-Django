@@ -61,3 +61,19 @@ table tr td #restore{
     display: flex;
     justify-content: center;
 }
+table tr td #remove{
+    /* text-decoration: underline; */
+    border:solid 1px;
+    background-color: rgba(132, 21, 21, 0.893);
+    padding: 2px;
+    color:white;
+
+    /* position */
+    display: flex;
+    justify-content: center;
+}
+
+table tr #options{
+    display: flex;
+    flex-direction: row;
+}

@@ -74,8 +74,8 @@ def deleteTask(request , task_id):
     # pass
     
 def restoreTask(request , task_id):
-    # get lists task deleted
-    task_deleted = [task.id for task in Task.objects.all()]
+    # get lists task deleted with view False
+    task_deleted = [task.id for task in Task.objects.all() if task.view == False]
     
     if (task_id in task_deleted):
         # get item
@@ -90,3 +90,20 @@ def restoreTask(request , task_id):
     
     # redirection to Index
     return HttpResponseRedirect(reverse("toDoList:index" , args=()))
+
+
+def removeDefinitelyTask(request , task_id):
+    # get list of task with Task.view False
+    task_to_delete_definitely = [task.id for task in Task.objects.all() if task.view == False]
+    
+    # check if task_id belongs is my list 
+    if (task_id in task_to_delete_definitely):
+        # get the object task which correspond
+        task = get_object_or_404(Task , id=task_id)
+        # delete this task
+        task.delete()
+        # redirect to 
+        return HttpResponseRedirect(reverse("toDoList:viewTaskDelete" , args=()))
+        # pass
+    else:
+        return render(request , "toDoList/error404.html")
