@@ -34,7 +34,7 @@ Django [version 4.2]
 1.Clone the GitHub repository:
 
 ```bash
-  git clone https://github.com/yandakiY/toDoList-Django.gitv
+  git clone https://github.com/yandakiY/toDoList-Django.git
 ```
 
 2.Perform database migrations :
